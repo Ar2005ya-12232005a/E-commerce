@@ -3,6 +3,8 @@ import { useContext } from 'react';
 import { ShopContext } from '../context/ShopContext';
 import Title from './Title';
 import { useState,useEffect } from 'react';
+import ProductItem from './ProductItem';
+import { Link } from 'react-router-dom';
 
 const LatestCollection = () => {
 
@@ -20,6 +22,16 @@ const LatestCollection = () => {
             <Title text1={"LATEST"} text2={"COLLECTIONS"}/>
             <p className = "w-3/4 m-auto text-xs sm:text-sm md: md:text-base text-gray-600">
             Style is a powerful way to express your personality, culture, and confidence without saying a word.</p>
+        </div>
+
+
+
+        {/* Rendering Products */}
+        <div className = "grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6">
+            { latestProducts.map((product, index)=>(
+               <ProductItem key={index} id={product._id} image={product.image} name={product.name} price={product.price}/>
+            ))}
+        
         </div>
     </div>
   )
